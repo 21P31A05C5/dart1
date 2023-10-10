@@ -1,0 +1,96 @@
+import 'package:bharathi/se2.dart';
+import 'package:flutter/material.dart';
+
+class navigate extends StatefulWidget {
+  const navigate({super.key});
+
+  @override
+  State<navigate> createState() => _navigateState();
+}
+
+class _navigateState extends State<navigate> {
+  @override
+  bool val=true;
+  void choiceAction(int i)
+  {
+    if(i==1||i==3||i==0)
+      {
+        Navigator.push(context,MaterialPageRoute(builder: (context)=>MyScreenThree()));
+      }
+    else
+      {
+        Navigator.pop(context);
+      }
+  }
+  Widget build(BuildContext context) {
+    return SafeArea(child:
+      DefaultTabController(
+        length: 4,
+        child:
+        Scaffold(backgroundColor: Colors.white70,
+          appBar: AppBar( titleSpacing: 5,
+          title: Text('Ajio',style:TextStyle(fontSize:30,fontWeight: FontWeight.w400),
+          ),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+      backgroundColor: Colors.blueGrey,
+      foregroundColor: Colors.white,
+      leading:Image(image: AssetImage('assets/ajio.png')),
+        actions: [IconButton(onPressed: (){}, icon: Icon(Icons.search),),
+          IconButton(onPressed: (){}, icon: Icon(Icons.notifications),),
+          PopupMenuButton(
+              splashRadius: 30,
+              elevation: 30,
+              shadowColor: Colors.black,
+              position: PopupMenuPosition.values[1],
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+
+              icon:Icon(Icons.more_vert_sharp),
+              onSelected: choiceAction,
+              tooltip: 'popup',itemBuilder: (context)=>[
+            PopupMenuItem(child: Text("Notifications"),value:1,),
+            PopupMenuItem(child: Text("Profile"),value:2,),
+            PopupMenuItem(child: Text("Settings"),value:3,),
+          ])
+        ],
+      bottom: TabBar(
+        indicatorColor: Colors.white,
+        tabs: [
+          Tab(text:"Men Wear"),
+          Tab(text:"Women Wear"),
+          Tab(text:"Kids"),
+          Tab(text:"beauty"),
+          Tab(text:"footwear"),
+        ],
+      ),
+      ),
+    body:
+    Column(
+      children: [
+        Center(
+          child: GestureDetector(
+            onTap: (){
+              print("Container Tapped");
+            },
+            child: Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Container(
+                height: 300,
+                width: 400,
+                color: Colors.purple,
+                child: GestureDetector(
+                  onTap: ()=>Navigator.push(context,MaterialPageRoute(builder:(context)=>MyScreenThree())),
+                  child: Center(
+                    child:Text("Tap",selectionColor: Colors.white)
+                  ),
+                ),
+              ),
+            ),
+          ),
+        )
+      ],
+    ),
+        ),
+    ),
+    );
+  }
+}

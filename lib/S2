@@ -1,0 +1,22 @@
+import 'package:flutter/material.dart';
+class MyScreenThree extends StatefulWidget {
+  const MyScreenThree({super.key});
+
+  @override
+  State<MyScreenThree> createState() => _MyScreenThreeState();
+}
+
+class _MyScreenThreeState extends State<MyScreenThree> {
+  @override
+  Widget build(BuildContext context) {
+    // final int wi=MediaQuery.of(context).size.width.toInt();
+     //final int hi=MediaQuery.of(context).size.height.toInt();
+    return Scaffold(
+      appBar: AppBar(title:Text('Notification') ,),
+      body: Center(
+        child: Text("beauty Products",style:TextStyle(fontSize: 32,fontWeight: FontWeight.w400) ,
+        ),
+      ),
+    );
+  }
+}
